@@ -111,6 +111,8 @@ namespace UK_File_Mod_Manager
 
         private void bunifuButton3_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
+            
             if (bunifuTextBox2.Text != "")
             {
                 foreach (string folder in Directory.GetDirectories(bunifuTextBox2.Text))
