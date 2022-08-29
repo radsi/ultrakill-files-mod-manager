@@ -163,5 +163,57 @@ namespace UK_File_Mod_Manager
             p.StartInfo.FileName = "ULTRAKILL.exe";
             p.Start();
         }
+        
+        private void bunifuTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                string folder = dlg.SelectedPath;
+                bunifuTextBox2.Text = folder;
+
+                JObject data = new JObject(
+                    new JProperty("DP", bunifuTextBox1.Text),
+                    new JProperty("MP", bunifuTextBox2.Text));
+
+                File.WriteAllText(System.Reflection.Assembly.GetEntryAssembly().Location.Replace(AppDomain.CurrentDomain.FriendlyName, "config.json"), data.ToString());
+
+                using (StreamWriter file = File.CreateText(System.Reflection.Assembly.GetEntryAssembly().Location.Replace(AppDomain.CurrentDomain.FriendlyName, "config.json")))
+                using (JsonTextWriter writer = new JsonTextWriter(file))
+                {
+                    data.WriteTo(writer);
+                }
+            }
+            else
+            {
+
+            }
+        }
+
+        private void bunifuTextBox2_TextChanged(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                string folder = dlg.SelectedPath;
+                bunifuTextBox2.Text = folder;
+
+                JObject data = new JObject(
+                    new JProperty("DP", bunifuTextBox1.Text),
+                    new JProperty("MP", bunifuTextBox2.Text));
+
+                File.WriteAllText(System.Reflection.Assembly.GetEntryAssembly().Location.Replace(AppDomain.CurrentDomain.FriendlyName, "config.json"), data.ToString());
+
+                using (StreamWriter file = File.CreateText(System.Reflection.Assembly.GetEntryAssembly().Location.Replace(AppDomain.CurrentDomain.FriendlyName, "config.json")))
+                using (JsonTextWriter writer = new JsonTextWriter(file))
+                {
+                    data.WriteTo(writer);
+                }
+            }
+            else
+            {
+
+            }
+        }
     }
 }
