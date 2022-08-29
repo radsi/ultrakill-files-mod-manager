@@ -19,10 +19,8 @@ namespace UK_File_Mod_Manager
         public static void ReplaceFile(string modFile, string vanillaFile)
         {
             FileInfo fInfo = new FileInfo(modFile);
-            if (File.Exists(vanillaFile))
-            {
-                File.Delete(vanillaFile);
-            }
+
+            File.Delete(vanillaFile);
             fInfo.CopyTo(vanillaFile);
         }
 
@@ -72,7 +70,6 @@ namespace UK_File_Mod_Manager
 
                 File.WriteAllText(System.Reflection.Assembly.GetEntryAssembly().Location.Replace(AppDomain.CurrentDomain.FriendlyName, "config.json"), data.ToString());
 
-                // write JSON directly to a file
                 using (StreamWriter file = File.CreateText(System.Reflection.Assembly.GetEntryAssembly().Location.Replace(AppDomain.CurrentDomain.FriendlyName, "config.json")))
                 using (JsonTextWriter writer = new JsonTextWriter(file))
                 {
